@@ -10,44 +10,354 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+        <style>
+            ul {
+            margin-left: 1.5em;
+            }
+            table {
+              border-collapse: collapse;
+              width: 100%;
+              margin: 1em 0;
+            }
+            
+            th, td {
+              border: 1px solid #ddd;
+              padding: 8px;
+            }
+            
+            th {
+              background-color: #f2f2f2;
+              text-align: left;
+              font-weight: bold;
+            }
+            
+            tr:hover {
+              background-color: #f5f5f5;
+            }
+            
+            /* alternate row color */
+            tr:nth-child(even) {
+              background-color: #f2f2f2;
+            }
+            
+            /* responsive table */
+            @media screen and (max-width: 600px) {
+              table {
+                width: 100%;
+              }
+            
+              td {
+                display: block;
+                text-align: right;
+              }
+            
+              td:before {
+                content: attr(data-label);
+                float: left;
+                font-weight: bold;
+              }
+            }
+            </style>
+            
 	</head>
 	<body class="is-preload">
 
-		<!-- Nav -->
-			<nav id="nav" style="margin-left:-0.55em">
-				<ul class="container">
-					<li><a href="index.html">HOME</a></li>
-					<li><a href="#problem">PROBLEM</a></li>
-					<li><a href="#data">DATA</a></li>
-					<li class="dropdown"><a href="#">METHOD <i class="fa fa-caret-down"></i></a>
-						<ul class="dropdown-menu">
-							<li><a href="preprocess.html">PREPROCESSING</a></li>
-							<li><a href="analysis.html">TIME SERIES ANALYSIS</a></li>
-						</ul>
-					</li>
-					<li><a href="#results">RESULTS</a></li>
-					<li><a href="#team">TEAM</a></li>
-				</ul>
-			</nav>
+	<!-- Nav -->
+		<nav id="nav">
+			<ul class="container">
+				<li><a href="index.html">HOME</a></li>
+				<li><a href="#problem">PROBLEM</a></li>
+				<li><a href="#data">DATA</a></li>
+				<li class="dropdown"><a href="#">METHOD <i class="fa fa-caret-down"></i></a>
+					<ul class="dropdown-menu">
+						<li><a href="preprocess.html">PREPROCESSING</a></li>
+						<li><a href="analysis.html">TIME SERIES ANALYSIS</a></li>
+					</ul>
+				</li>
+				<li><a href="#results">RESULTS</a></li>
+				<li><a href="#team">TEAM</a></li>
+			</ul>
+		</nav>
 
 
-			<!-- Methods -->
-			<article id="methods" class="wrapper style1">
-				<div class="container">
-					<header>
-						<h2>Data Preprocessing</h2>
-					</header>
-			</article>
+		<!-- Methods -->
+		<article id="methods" class="wrapper style1">
+			<div class="container" style="text-align: left;">
+				<header style="text-align:center">
+					<h2>Data Preprocessing</h2>
+				</header>
+
+				<!-- Introduction -->
+				<section>
+					<h4 style="color:#4169E1">INTRODUCTION</h4>
+					<p>Here, we describe the steps we took to preprocess the dataset.</p>
+				</section>
+
+				<!-- Data Collection -->
+				<section>
+					<h4 style="color:#4169E1">DATA COLLECTION</h4>
+                    <ul>
+					<li><b>Statistics.</b> A total of <u>118</u> tweets were collected from February 24, 2023.</li>
+                    <li><b>Method.</b> The team relied on a modified version of a Python scraper using snscrape. The code we used was primarily based on an <a href="https://betterprogramming.pub/how-to-scrape-tweets-with-snscrape-90124ed006af">online source</a>, which was enhanced by Victor Reyes, a fellow Data Science student, who made additional improvements to gather a wider range of data. The scraper code was finally updated by the team and tailored to meet the desired consistency and arrangement of data.
+                    <pre class="code-block"><details><summary>Tweet Scraper</summary><code>
+import snscrape.modules.twitter as sntwitter
+import pandas as pd
+import datetime
+
+# Creating list to append tweet data to
+tweets_list2 = []
+search_term = "covid gumawa china" # sample search term
+
+years = [
+    "2021",
+]
+
+months = [
+    "01",
+    "02",
+    "03",
+    "04",
+    "05",
+    "06",
+    "07",
+    "08",
+    "09",
+    "10",
+    "11",
+    "12"
+]
+
+end_of_month_days = [
+    "31",
+    "28",
+    "31",
+    "30",
+    "31",
+    "30",
+    "31",
+    "31",
+    "30",
+    "31",
+    "30",
+    "31"
+]
+
+# Using TwitterSearchScraper to scrape data and append tweets to list
+
+for year in years:
+    for month in range(len(months)):
+        print(f"Starting with {year}-{months[month]}-01")
+        for i, tweet in enumerate(
+                sntwitter.TwitterSearchScraper(f'{search_term} since:{year}-{months[month]}-01 until:{year}-{months[month]}-{end_of_month_days[month]}').get_items()):
+            if i >= 300:
+                break
+            tweets_list2.append([
+                                    "@" + tweet.user.username,
+                                    tweet.user.displayname,
+                                    tweet.user.renderedDescription,
+                                    " ",
+                                    (tweet.user.created).strftime("%m/%Y"),
+                                    tweet.user.friendsCount,
+                                    tweet.user.followersCount,
+                                    tweet.user.location,
+                                    " ",
+                                    tweet.rawContent,
+                                    " ",
+                                    " ",
+                                    tweet.date.strftime('%m/%d/%Y %H:%M:%S'),
+                                    tweet.url,
+                                    " ",
+                                    " ",
+                                    tweet.likeCount,
+                                    tweet.replyCount,
+                                    tweet.retweetCount,
+                                    tweet.quoteCount])
+        print(f"Done with {year}-{months[month]}-{end_of_month_days[month]}")
+
+# Creating a dataframe from the tweets list above
+tweets_df2 = pd.DataFrame(tweets_list2, columns=[
+                                                    'Handle',
+                                                    'Username',
+                                                    'Bio',
+                                                    'Account type',
+                                                    'Joined',
+                                                    'Following',
+                                                    'Followers',
+                                                    'Location',
+                                                    "EMPTY DIVIDER",
+                                                    'Tweet',
+                                                    'Tweet Translated',
+                                                    'Tweet Type',
+                                                'Datetime',
+                                                    'URL',
+                                                    "Screenshot",
+                                                    "Content type", 
+                                                    'Likes',
+                                                    'Replies',
+                                                    'Retweets',
+                                                    'Quote Retweets'])
+
+tweets_df2.to_csv(f'term_{search_term} date_{datetime.date.today()}.csv')
+
+print(tweets_df2['Tweet'])
+                    </code></details></pre>
+                    Furthermore, to ensure the uniqueness of our dataset, we conducted a manual yet meticulous comparison of all tweets with the help of the `Find` command to search for any duplicates. Any duplicates that we found were immediately removed from the dataset.</li>
+                    <li><b>Criteria.</b> The dataset consists of tweets that were collected between 2020 and 2022, which primarily cover the topic of misinfo/disinfo regarding the origin of COVID-19 and the alleged role of China in its creation. The timeframe was chosen to cover the period since the outbreak of COVID-19 which intensified in early 2020. Keywords or phrases used were: 
+                        <ul>
+                            <li>"covid gawa ng china"</li>
+                            <li>"chinese gawa covid"</li>
+                            <li>"chinese ginawa covid"</li>
+                            <li>"virus gawa china"</li>
+                            <li>"covid gawa sa china"</li>
+                            <li>"coronavirus gawa china"</li>
+                            <li>"covid gumawa china"</li>
+                            <li>"covid ginawa china"</li>
+                            <li>"ncov gawa china"</li>
+                            <li>"covid pakana china"</li>
+                            <li>"covid made in china"</li>
+                            <li>"ncov ginawa china"</li>
+                            <li>"china created covid"</li>
+                            <li>"tsino gawa covid"</li>
+                            <li>"tsina ginawa covid"</li>
+                            <li>"china gumawa virus"</li>
+                          </ul>                          
+                    </li>
+                    <li><b>Features.</b> The dataset as it stands has features/columns specified in the table below.
+                        <table>
+                            <tr>
+                              <th>Feature Name</th>
+                              <th>Description</th>
+                            </tr>
+                            <tr>
+                              <td>ID</td>
+                              <td>A unique identifier assigned to each tweet in the dataset</td>
+                            </tr>
+                            <tr>
+                              <td>Timestamp</td>
+                              <td>The date and time when the tweet was posted, in UTC</td>
+                            </tr>
+                            <tr>
+                              <td>Tweet URL</td>
+                              <td>The web address of the tweet</td>
+                            </tr>
+                            <tr>
+                              <td>Group</td>
+                              <td>The group number assigned to the team</td>
+                            </tr>
+                            <tr>
+                              <td>Collector</td>
+                              <td>The username of the Twitter account that collected the tweet</td>
+                            </tr>
+                            <tr>
+                              <td>Category</td>
+                              <td>A broad category that the tweet pertains to such as Health or Gender.</td>
+                            </tr>
+                            <tr>
+                              <td>Topic</td>
+                              <td>A more specific topic of the group within the category</td>
+                            </tr>
+                            <tr>
+                              <td>Keywords</td>
+                              <td>Words or phrases that were used to search for or filter the tweet</td>
+                            </tr>
+                            <tr>
+                              <td>Account handle</td>
+                              <td>The Twitter username of the account that posted the tweet</td>
+                            </tr>
+                            <tr>
+                              <td>Account name</td>
+                              <td>The display name of the account that posted the tweet</td>
+                            </tr>
+                            <tr>
+                              <td>Account bio</td>
+                              <td>A brief description of the account and its purpose, as provided by the account owner</td>
+                            </tr>
+                            <tr>
+                              <td>Account type</td>
+                              <td>A label indicating the type or category of account, such as anonymous, identified, or media.</td>
+                            </tr>
+                            <tr>
+                              <td>Joined</td>
+                              <td>The date when the account was created</td>
+                            </tr>
+                            <tr>
+                              <td>Following</td>
+                              <td>The number of accounts the account is following</td>
+                            </tr>
+                            <tr>
+                              <td>Followers</td>
+                              <td>The number of accounts that are following the account</td>
+                            </tr>
+                            <tr>
+                              <td>Location</td>
+                              <td>The location associated with the account, as provided by the account owner</td>
+                            </tr>
+                            <tr>
+                              <td>Tweet</td>
+                              <td>The text of the tweet</td>
+                            </tr>
+                            <tr>
+                              <td>Tweet Translated</td>
+                              <td>The translated version of the tweet in the English language.</td>
+                            </tr>
+                            <tr>
+                              <td>Tweet Type</td>
+                              <td>A label indicating the type of tweet, such as text or reply.</td>
+                            </tr>
+                            <tr>
+                              <td>Date posted</td>
+                              <td>The date and time when the tweet was posted, as reported by Twitter</td>
+                            </tr>
+                            <tr>
+                              <td>Content type</td>
+                              <td>A label indicating the type of content that the tweet belongs to such as "Emotional" if the tweet contains subjective content.</td>
+                            </tr>
+                            <tr>
+                              <td>Likes</td>
+                              <td>The number of likes the tweet has received</td>
+                            </tr>
+                            <tr>
+                              <td>Replies</td>
+                              <td>The number of replies or comments the tweet has received</td>
+                            </tr>
+                            <tr>
+                              <td>Retweets</td>
+                              <td>The number of times the tweet has been retweeted</td>
+                            </tr>
+                            <tr>
+                              <td>Quote Tweets</td>
+                              <td>The number of times the tweet has been quoted or retweeted with a comment</td>
+                            </tr>
+                              <td>Reasoning</td>
+                              <td>An explanation justifying the misinformation/disinformation content of the tweet, may be a link</td>
+                            </tr>
+                            <tr>
+                              <td>Remarks</td>
+                              <td>Any additional comments or notes about the collected tweet</td>
+                            </tr>
+                          </table>
+                    
+                    </li>
+                </ul>
+				</section>
+
+				<!-- Data Preprocessing -->
+				<section>
+					<h4 style="color: #4169E1">DATA PREPROCESSING</h4>
+					<div style="margin-left:2em"><script src="https://gist.github.com/Shanicc/f6ec827e05a8ce61e39da6046c313735.js"></script></div>
+				</section>
+			</div>
+		</article>
 
 
-		<!-- Scripts -->
-			<script src="assets/js/
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+	<!-- Scripts -->
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.scrolly.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
 
-	</body>
+</body>
+
 </html>

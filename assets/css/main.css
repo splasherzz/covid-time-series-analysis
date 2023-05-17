@@ -118,7 +118,19 @@ input, select, textarea {
 	background-color: #f5f5f5;
   }
   
-
+  .code-block {
+	background-color: #f8f8f8;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	font-family: 'Consolas', Courier, monospace;
+	font-size: 14px;
+	line-height: 1.5;
+	overflow-x: auto;
+	padding: 20px;
+	margin: 20px 0;
+	white-space: pre-wrap;
+  }
+  
 /* Basic */
 
 	html {
