@@ -16,12 +16,17 @@
 		<!-- Nav -->
 			<nav id="nav">
 				<ul class="container">
-					<li><a href="#top">Top</a></li>
-					<li><a href="#overview">Overview</a></li>
-					<li><a href="#data">Data</a></li>
-					<li><a href="#methods">Methods</a></li>
-					<li><a href="#results">Results</a></li>
-					<li><a href="#team">Team</a></li>
+					<li><a href="#top">HOME</a></li>
+					<li><a href="#problem">PROBLEM</a></li>
+					<li><a href="#data">DATA</a></li>
+					<li class="dropdown"><a href="#">METHOD <i class="fa fa-caret-down"></i></a>
+						<ul class="dropdown-menu">
+							<li><a href="preprocess.html">PREPROCESSING</a></li>
+							<li><a href="analysis.html">TIME SERIES ANALYSIS</a></li>
+						</ul>
+					</li>
+					<li><a href="#results">RESULTS</a></li>
+					<li><a href="#team">TEAM</a></li>
 				</ul>
 			</nav>
 
@@ -34,14 +39,14 @@
 						</div>
 						<div class="col-8 col-7-large col-12-medium">
 							<header>
-								<h1>Hi. We are <strong>Vanguard</strong>.</h1>
+								<h1 >Hi. We are <strong style="color:#4169E1">Vanguard.</strong></h1>
 							</header>
 							<p>And this is our project, <strong>Tracing the Source</strong>, <em>which aims to identify the event(s) that played a key role in initiating and amplifying the misinformation about COVID-19 being created by China</em>. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-							<p>Data Science Team [WFW]</p>
+							<p style="font-size:12px; letter-spacing: 0.15em;"><b>DATA SCIENCE TEAM</b></p>
 							<div style="display:flex; flex-direction:row;">
-								<div style="flex-basis:30%;"><img src="images/teamicon1.jpg" style="border-radius:100%; width: 0.7in; height: 0.7in;"><br>Flores, Nicole</div>
-								<div style="flex-basis:30%;"><img src="images/teamicon2.jpg" style="border-radius:100%; width: 0.7in; height: 0.7in;"><br>Sabado, Julia</div>
-								<div style="flex-basis:30%;"><img src="images/teamicon3.jpg" style="border-radius:100%; width: 0.7in; height: 0.7in;"><br>Tiangco, Andrei</div>
+								<div style="flex-basis:30%;"><img src="images/teamicon1.jpg" style="border-radius:100%; width: 0.7in; height: 0.7in;"><br>Nicole Flores<div style="font-size:12px; margin-top:-0.5em">CS 132 WFW</div></div>
+								<div style="flex-basis:30%;"><img src="images/teamicon2.jpg" style="border-radius:100%; width: 0.7in; height: 0.7in;"><br>Julia Sabado<div style="font-size:12px; margin-top:-0.5em">CS 132 WFW</div></div>
+								<div style="flex-basis:30%;"><img src="images/teamicon3.jpg" style="border-radius:100%; width: 0.7in; height: 0.7in;"><br>Andrei Tiangco<div style="font-size:12px; margin-top:-0.5em">CS 132 WFW</div></div>
 							  </div>
 						</div>
 					</div>
@@ -49,10 +54,10 @@
 			</article>
 
 		<!-- Overview -->
-			<article id="overview" class="wrapper style2">
+			<article id="problem" class="wrapper style2">
 				<div class="container">
 					<header>
-						<h2>Here's an overview of our project.</h2>
+						<h2>Here's our problem formulation.</h2>
 						<!-- <p>Odio turpis amet sed consequat eget posuere consequat.</p> -->
 					</header>
 					<div class="row aln-center">
@@ -87,7 +92,7 @@
 			</article>
 
 		<!-- Data -->
-			<article id="data" class="wrapper style3">
+			<!-- <article id="data" class="wrapper style3">
 				<div class="container">
 					<header>
 						<h2>We mined the internet for fake news data.</h2>
@@ -141,7 +146,7 @@
 						<p>Lorem ipsum dolor sit sapien vestibulum ipsum primis?</p>
 					</footer>
 				</div>
-			</article>
+			</article> -->
 
 			<!-- Methods -->
 			<article id="methods" class="wrapper style3">
@@ -153,15 +158,15 @@
 					<div class="row">
 						<div class="col-6 col-6-medium col-12-small">
 							<article class="box style2">
-								<a href="#" class="image featured"><img src="images/pic02.jpg" alt="" /></a>
-								<h3><a href="#">Data Preprocessing</a></h3>
+								<a class="image featured"><img src="images/pic02.jpg" alt="" /></a>
+								<h3><a href="preprocess.html">Data Preprocessing</a></h3>
 								<p>Ornare nulla proin odio consequat.</p>
 							</article>
 						</div>
 						<div class="col-6 col-6-medium col-12-small">
 							<article class="box style2">
-								<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-								<h3><a href="#">Machine Learning</a></h3>
+								<a class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+								<h3><a href="analysis.html">Time Series Analysis</a></h3>
 								<p>Ornare nulla proin odio consequat.</p>
 							</article>
 						</div>
@@ -269,6 +274,7 @@
 			</article>
 
 		<!-- Scripts -->
+			<script src="assets/js/
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.scrolly.min.js"></script>
 			<script src="assets/js/browser.min.js"></script>
