@@ -298,12 +298,28 @@ print(tweets_df2['Tweet'])
 				<section>
 					<h4 style="color: #4169E1">DATA PREPROCESSING</h4>
             <div style="margin-left:2em">
-              <script src="https://gist.github.com/Shanicc/5ee982ad1e490cab6651f8c2a17526ca.js"></script>
+              Refer to the Colab notebook below to view the extensive process in data preprocessing and exploration. 
+              <script src="https://gist.github.com/Shanicc/61de506f8655e68602df77a479d92bb8.js"></script>
             </div> 
             <ul>
               <li>
                 <b>Handling missing values.</b>
-                The team first examined the dataset to identify which columns contain null values. Columns such as Screenshot, Views, Rating, Reviewer and Review were dropped since they were considered insignificant data for analysis. Missing values for the columns Account Bio,  Tweet Translated, Location, and Remarks were imputed with ‘No bio’, ‘No translation’, ‘No location’, and ‘No remarks’ respectively. All of these were accomplished using Pandas package methods isna, drop, and fillna. 
+                The team first examined the dataset to identify which columns contain null values. Columns such as Screenshot, Views, Rating, Reviewer and Review were dropped since they were considered insignificant data for analysis. Missing values for the columns Account Bio,  Tweet Translated, Location, and Remarks were imputed with ‘No bio’, ‘No translation’, ‘No location’, and ‘No remarks’ respectively. All of these were accomplished using Pandas package methods isna, drop, and fillna. We can view some of the imputed values such as remarks:
+              <pre class="block code">
+0            No remarks
+1      Invalid location
+2            No remarks
+3            No remarks
+4            No remarks
+              ...       
+113    Invalid location
+114         No location
+115          No remarks
+116          No remarks
+117         No location
+Name: Remarks, Length: 110, dtype: category
+Categories (4, object): ['Invalid location', 'No location', 'No remarks', 'Tweet is part of a thread']
+              </pre>
               </li>
               <li>
                 <b>Handling outliers.</b>
