@@ -32,14 +32,70 @@
 
 
 			<!-- Methods -->
+			<div style="margin: 0 20%">
 			<article id="methods" class="wrapper style1">
-				<div class="container">
+				<div class="container" style="text-align: left;">
 					<header>
-						<h2>Time Series Analysis</h2>
-                        See embedded <a href="preprocess.html">Colab notebook</a> on Data Preprocessing for the meantime. 
+						<h2 style="font-size: 36px">Time Series Analysis</h2>
 					</header>
-			</article>
 
+				<!-- Overall Tweet Timeline -->
+				<section>
+					<h4 style="color: #4169E1">OVERALL TWEET TIMELINE</h4>
+					<ul>
+						<li>
+							<b>Time bins.</b> The preprocessed tweets were bundled into regular time bins, in particular, 1-week epochs which are granular enough to show information about tweet frequency variations while accommodating the small dataset. This was accomplished by using the pandas groupby method on our tweet dataframe. A pandas Grouper object was used to group timestamps into bins at the desired frequency (1 week) and count up the number of entries in each bin using the .size() aggregator function before plotting the timeline.
+							<pre><details class="block code"><summary>Tweet Frequency Count</summary>
+# Group the data by 1-week intervals
+covid_weekly = covid.groupby(pd.Grouper(key='Date Posted', freq='1W', convention='start')).size()
+
+covid_weekly.plot(figsize=(18, 6))
+plt.ylabel('1-week Tweet Count')
+plt.title('Tweet Frequency Count, January 2020 to December 2021')
+plt.grid(True)
+plt.show()
+							</details></pre>
+							<img src="images/plot3.png" class="image fit">
+							Here we can see that the frequency of relevant tweets peaked at the tail end of March 2020.
+						</li>
+					</ul>
+				</section>
+
+				<!-- Binning -->
+				<section>
+					<h4 style="color: #4169E1">BINNING</h4>
+					<ul>
+						<li>
+							<b>Frequency bins.</b> 
+							For the analysis, we categorized the tweet frequencies into three bins: low, medium, and high. Based on the distribution of tweet counts, we assigned the following labels to the bins:
+							<ul>
+								<li>Low (0,1): 74 tweets</li>
+								<li>Medium (2): 22 tweets</li>
+								<li>High (3+): 8 tweets</li>
+							</ul>
+							<pre><details class="block code"><summary>Tweet Frequency Distribution</summary>
+# Define the ranges for binning based on frequency distribution
+bins = [0, 1, 2, 10] # specified ranges to address skewness
+labels = ['Low', 'Medium', 'High']
+
+# Create a new column with the categorical variable feature based on binning
+covid_weekly['tweet_frequency_bin'] = pd.cut(covid_weekly, bins=bins, labels=labels, include_lowest=True)
+
+# Plotting the data
+covid_weekly['tweet_frequency_bin'].value_counts().sort_index().plot(kind='bar', figsize=(10, 6))
+plt.xlabel('Frequency Bin')
+plt.ylabel('Count')
+plt.xticks(rotation=0)
+plt.title('Tweet Frequency Distribution, January 2020 to December 2021')
+plt.show()
+							</details></pre>
+							Below is a plot showing the distribution of tweets across these bins.
+							<img src="images/plot4.png" class="image fit">
+						</li>
+					</ul>
+				</section>
+			</article>
+			</div>
 
 		<!-- Scripts -->
 			<script src="assets/js/
