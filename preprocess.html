@@ -79,7 +79,7 @@
 			</ul>
 		</nav>
 
-    <div style="margin: 0 2.5in">
+    <div style="margin: 0 18%">
 		<!-- Methods -->
 		<article id="methods" class="wrapper style1">
 			<div class="container" style="text-align: left;">
@@ -88,11 +88,11 @@
           <hr>
 				</header>
 
-				<!-- Introduction -->
+				<!-- Introduction
 				<section>
 					<h4 style="color:#4169E1">INTRODUCTION</h4>
 					<p>Here, we describe the steps we took to preprocess the dataset.</p>
-				</section>
+				</section> -->
 
 				<!-- Data Collection -->
 				<section>
@@ -100,7 +100,7 @@
                     <ul>
 					<li><b>Statistics.</b> A total of <u>118</u> tweets were collected from February 24, 2023.</li>
                     <li><b>Method.</b> The team relied on a modified version of a Python scraper using snscrape. The code we used was primarily based on an <a href="https://betterprogramming.pub/how-to-scrape-tweets-with-snscrape-90124ed006af">online source</a>, which was enhanced by Victor Reyes, a fellow Data Science student, who made additional improvements to gather a wider range of data. The scraper code was finally updated by the team and tailored to meet the desired consistency and arrangement of data.
-                    <pre class="code-block"><details><summary>Tweet Scraper</summary><code>
+                    <pre class="block code"><details><summary>Tweet Scraper</summary><code>
 import snscrape.modules.twitter as sntwitter
 import pandas as pd
 import datetime
@@ -191,7 +191,7 @@ tweets_df2 = pd.DataFrame(tweets_list2, columns=[
                                                     'Tweet',
                                                     'Tweet Translated',
                                                     'Tweet Type',
-                                                'Datetime',
+                                                    'Datetime',
                                                     'URL',
                                                     "Screenshot",
                                                     "Content type", 
@@ -347,7 +347,28 @@ print(tweets_df2['Tweet'])
 				<!-- Data Preprocessing -->
 				<section>
 					<h4 style="color: #4169E1">DATA PREPROCESSING</h4>
-					<div style="margin-left:2em"><script src="https://gist.github.com/Shanicc/5ee982ad1e490cab6651f8c2a17526ca.js"></script></div>
+            <div style="margin-left:2em">
+              <script src="https://gist.github.com/Shanicc/5ee982ad1e490cab6651f8c2a17526ca.js"></script>
+            </div> 
+            <ul>
+              <li>
+                <b>Handling missing values.</b>
+                The team first examined the dataset to identify which columns contain null values. Columns such as Screenshot, Views, Rating, Reviewer and Review were dropped since they were considered insignificant data for analysis. Missing values for the columns Account Bio,  Tweet Translated, Location, and Remarks were imputed with ‘No bio’, ‘No translation’, ‘No location’, and ‘No remarks’ respectively. All of these were accomplished using Pandas package methods isna, drop, and fillna. 
+              </li>
+              <li>
+                <b>Handling outliers.</b>
+                Outliers in the dataset could be tweets posted without correspondence to the Wuhan lab leak rumors timeframe or unrelated to the topic of Covid-19 origin. The latter was handled through keyword matching and content analysis. However, tweets from 2021 and 2022 cannot be immediately considered outliers as the correlation is yet to be established. Upon checking the graph of frequency of tweets by year, we see that the year 2022 gets relatively uneven, less than 10 tweets, which can be consider as outliers at this point. Hence, tweets from 2022 were removed.
+                <img src="images/plot1.png" class="image fit">
+              </li>
+              <li>
+                <b>Formatting consistency and standardization.</b>
+                Date and text formatting of columns in the dataset were standardized. Column titles were capitalized while account handles and keywords were converted to lowercase for ease and uniformity. All columns containing quantitative data and qualitative data were set to ‘int’ and ‘category’ respectively. We ensured the conversion of ‘Date Posted’ and ‘Timestamp’ objects to ‘datetime’ and that all required formats were in order. This allows data features to be compared and analyzed easier through statistical methods.
+              </li>
+              <li>
+                <b>Categorical data encoding.</b>
+                The team performed mapping for specific categorical columns. Account classifications ‘Identified', 'Anonymous', and 'Media' were assigned to the labels 0, 1, and 2, respectively. The case is similar for the content classifications ‘Rational', 'Emotional', and 'Transactional'. The encoded labels numerically indicate which tweets are related to or contain a specific type of account or content.
+              </li>
+            </ul>
 				</section>
 			</div>
 		</article>
