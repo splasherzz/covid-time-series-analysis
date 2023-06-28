@@ -221,7 +221,7 @@ input, select, textarea {
 	}
 
 		a:hover {
-			color: #4169E1 !important;
+			color: #234EA2 !important;
 		}
 
 		a img {
@@ -458,11 +458,11 @@ input, select, textarea {
 		}
 
 		.row > .col-4 {
-			width: 33.33333%;
+			width: 33.33%;
 		}
 
 		.row > .off-4 {
-			margin-left: 33.33333%;
+			margin-left: 33.33%;
 		}
 
 		.row > .col-5 {
@@ -490,11 +490,11 @@ input, select, textarea {
 		}
 
 		.row > .col-8 {
-			width: 66.66667%;
+			width: 66.666667%;
 		}
 
 		.row > .off-8 {
-			margin-left: 66.66667%;
+			margin-left: 66.666667%;
 		}
 
 		.row > .col-9 {
@@ -1799,7 +1799,7 @@ input, select, textarea {
 		input[type="reset"]:hover,
 		button:hover,
 		.button:hover {
-			background-color: #4169E1;
+			background-color: #234EA2;
 			color: #fff !important;
 		}
 
@@ -1808,7 +1808,7 @@ input, select, textarea {
 		input[type="reset"]:active,
 		button:active,
 		.button:active {
-			background-color: #4169E1;
+			background-color: #234EA2;
 			top: 1px;
 		}
 
@@ -2019,9 +2019,6 @@ input, select, textarea {
 		padding: 2em;
 	}
 
-		.box.style1 {
-			padding: 3em 2em 3.5em 2em;
-		}
 
 			.box.style1 h3 {
 				margin-bottom: 0.5em;
@@ -2076,7 +2073,7 @@ input, select, textarea {
 		}
 
 		.icon.featured {
-			color: #4169E1;
+			color: #234EA2;
 			display: block;
 			margin: 0 0 1.5em 0;
 			cursor: default;
@@ -2097,7 +2094,7 @@ input, select, textarea {
 
 		.wrapper.style1 {
 			background-image: none;
-			background-color: #fff;
+			height: 95vh;
 		}
 
 		.wrapper.style2 {
@@ -2184,7 +2181,7 @@ input, select, textarea {
 		}
 
 		#nav a:hover {
-			color: #4169E1 !important;
+			color: #234EA2 !important;
 			background: transparent;
 		}
 		
@@ -2196,7 +2193,7 @@ input, select, textarea {
 			left: 10%;
 			width: 80%;
 			height: 2px;
-			background-color: #4169E1;
+			background-color: #234EA2;
 		}
 
 
