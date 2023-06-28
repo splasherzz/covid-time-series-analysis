@@ -29,6 +29,7 @@
 						<ul class="dropdown-menu">
 							<li><a href="regression.html">REGRESSION ANALYSIS</a></li>
 							<li><a href="event.html">EVENT DETECTION</a></li>
+                            <li><a href="discussion.html">DISCUSSION</a></li>
 						</ul>
 					</li>
 					<li><a href="index.html#team">TEAM</a></li>
@@ -44,16 +45,61 @@
 						<h2 style="font-size: 36px">Event Detection</h2>
 					</header>
                 <section>
-                    <h4 style="color: #4169E1">STRUCTURE OF EVENT DETECTION MODEL</h4>
+                    <h4 style="color: #4169E1">STRUCTURE AND MECHANISM OF MODEL</h4>
+                    <ul>
+                        <li>
+                            <b>Input</b>. The model takes the time-series data as input. 
+                        </li>
+                        <li>
+                            <b>Preprocessing</b>. The input data may undergo preprocessing steps such as feature extraction
+                        </li>
+                        <li>
+                            <b>Peak Detection</b>. This layer performs the main event detection task by identifying peaks or significant changes in the time-series data.  The general peak detection algorithm used in the given code snippet is based on the find_peaks function from the scipy.signal library. This algorithm identifies peaks in a given signal by examining properties such as peak height, width, threshold, distance, and prominence. It searches for local maxima that meet the specified criteria and marks them as detected peaks. The algorithm leverages various techniques, such as smoothing, differentiation, and thresholding, to identify significant changes or peaks in the signal. By extracting these peaks, the algorithm provides insights into the occurrence of notable events or peaks in the data.
+                        </li>
+                        <li>
+                            <b>Output</b>. The final output of the model is a set of timestamps corresponding to peak dates that may have corresponding events
+                        </li>
+                    </ul>
                 </section>
                 <section>
                     <h4 style="color: #4169E1">MODEL PARAMETERS</h4>
+                    <ul>
+                        <li>
+                            <b>Height</b>. The height parameter was set to 0.2. This choice indicates that peaks needed to have a minimum height of 0.2 in the signal to be considered valid peaks. This value was likely selected based on the characteristics of the data and the desired sensitivity to detect prominent peaks while filtering out smaller fluctuations or noise.
+                        </li>
+                        <li>
+                            <b>Width</b>. The width parameter was set to 0.2. This value represents the minimum width a peak must have to be considered valid. By choosing this value, the algorithm focuses on detecting peaks with a minimum duration or width of 0.2, potentially filtering out narrower or shorter fluctuations in the signal.
+                        </li>
+                        <li>
+                            <b>Threshold</b>. The threshold parameter was set to 2. This threshold determines the vertical distance between a peak and its neighboring samples. Peaks needed to exceed this threshold to be detected. This value was likely chosen to ensure that detected peaks are significantly higher than their surrounding samples, reducing the chances of false positives caused by minor fluctuations.
+                        </li>
+                        <li> 
+                            <b>Distance</b>. The distance parameter was set to 1. This choice indicates that neighboring peaks needed to have a minimum horizontal distance of 1 sample between them to be considered separate peaks. This value helps prevent the algorithm from detecting multiple peaks in close proximity and instead captures distinct events by enforcing a minimum gap between peaks.
+                        </li>
+                        <li>
+                            <b>Prominence</b>. The prominence parameter was set to 3. This value represents the vertical distance between a peak and its lowest contour line. Peaks needed to have a prominence greater than 3 to be considered valid peaks. This choice emphasizes the prominence or significance of detected peaks, ensuring that they stand out from their surroundings and have a noticeable impact on the signal.
+                        </li>
+                    </ul>
                 </section>
                 <section>
-                    <h4 style="color: #4169E1">PARALLELS WITH REAL-LIFE EVENTS</h4>
-                </section>
-                <section>
-                    <h4 style="color: #4169E1">RESULTS</h4>
+                    <h4 style="color: #4169E1">PARALLELS AND RESULTS</h4>
+                    <img src="images/peaks.jpg" class="image fit">
+                    The analysis of tweet frequency revealed two significant spikes in activity around March 29, 2020, and April 19, 2020. These spikes indicate periods of increased Twitter activity related to COVID-19. Corresponding events that overlapped with these peaks can help provide context:
+                    <p>
+                    <ul>
+                        <li>
+                            <b>Fourth week of March 2020.</b> On March 25 of 2020, The Washington Times published an update stating that the virus was not manufactured in a lab. This news likely sparked discussions and reactions on social media, leading to the increased tweet frequency around the last week of March 2020. 
+                        </li>
+                        <li>
+                            <b>Third week of April 2020.</b> On April 18 of 2020, former president Trump made a statement suggesting that the lab accident theory regarding the origin of the virus made "sense," albeit without citing evidence. This statement likely triggered discussions and debates on social media, leading to the peak in tweet frequency around the third week of April 2020.
+                        </li>
+                    </ul> 
+                </p>
+                        These events demonstrate the influence of significant news updates and statements on Twitter activity during the early stages of the COVID-19 pandemic. 
+                        
+                        <p>
+                            Although smaller peaks in tweet frequency were observed around August 2020 and May 2021, they were not as prominent as the previously mentioned spikes. The presence of these smaller peaks can be attributed to various factors. In August 2020, potential reasons for the smaller peak could include localized outbreaks, policy changes, or significant events related to the pandemic in specific regions or communities. It is possible that these events gained attention and generated some discussion on Twitter, leading to a smaller increase in tweet frequency. Similarly, in May 2021, possible causes for the smaller peak could include emerging variants, vaccine-related developments, or changes in public health guidelines.
+                        </p>
                 </section>
 			</article>
 			</div>

@@ -29,6 +29,7 @@
 						<ul class="dropdown-menu">
 							<li><a href="regression.html">REGRESSION ANALYSIS</a></li>
 							<li><a href="event.html">EVENT DETECTION</a></li>
+                            <li><a href="discussion.html">DISCUSSION</a></li>
 						</ul>
 					</li>
 					<li><a href="index.html#team">TEAM</a></li>
@@ -39,34 +40,57 @@
 			<!-- Methods -->
 			<div style="margin: 0 20%">
 			<article id="results" class="wrapper style1">
-				<div class="container" style="text-align: left;">
+				<div  style="text-align: left;">
 					<header>
 						<h2 style="font-size: 36px">Regression Analysis</h2>
 					</header>
-
+                    <p>
+                        The regression analysis is deemed as the appropriate statistical test based on the hypothesis as it was able to model and quantify the relationship between the predictor and outcome variables. This allows for the investigation of whether specific time periods, such as before and after the alleged rumors, had a significant impact on tweet frequency. Moreover, it enabled the researchers to determine if there was evidence of a correlation and provide insights into the influence of the alleged rumors on the spread of misinformation.                      
+                    </p>
                 <section>
                         <h4 style="color: #4169E1">STATISTICAL TEST SELECTION</h4>
                         In choosing a statistical test, the following criteria were considered:
                         <ul>
-                            <li><b>Nature of predictor variable.</b> The predictor variable <i>date</i> </li>
-                            <li><b>Nature of outcome variable.</b> The outcome variable <i>tweet frequency</i></li>
+                            <li><b>Nature of predictor variable.</b> The date was selected as the predictor variable in this analysis because it was expected to have an influence on the outcome variable, which is the tweet frequency. By including the date as a predictor variable, the researchers aimed to capture the temporal aspect of the data and investigate how changes in the timing of events relate to variations in tweet frequency.
+                            <li><b>Nature of outcome variable.</b> The tweet frequency was chosen as the outcome variable in this analysis because it represents the measure of interest. The researchers aimed to examine and understand the patterns and variations in the frequency of tweets related to COVID-19 and the alleged Chinese origin.
                             <li><b>Number of predictor variables.</b> There is only one predictor variable--<i>date</i>.</li>
                         </ul>
-                        Thus, the researchers chose to do a regression analysis for the statistical modeling.
+                        Given these considerations, the researchers chose to use a simple regression model, in particular, segmented linear regression for the statistical modeling.
                 </section>
 
                 <section>
                     <h4 style="color: #4169E1">ASSUMPTIONS OF STATISTICAL MODEL</h4>
+                    <ul>
+                        <li>
+                            <b>Linearity</b>. One of the assumptions of regression analysis is that there is a linear relationship between the predictor variable (date) and the outcome variable (tweet frequency). Violation of this assumption may lead to biased coefficient estimates and inaccurate predictions. In the current analysis, segmented linear regression was used to address any potential violation of linearity. This approach allows for different linear relationships before and after the identified timing, accommodating potential non-linear trends in the data.
+                        </li>
+                        <li>
+                            <b>Independence</b>. Regression analysis assumes that the observations are independent of each other. Violation of independence may lead to issues such as autocorrelation, where the errors of the model are correlated over time. By collecting a random sample of tweet frequencies over the designated time period and ensuring that each tweet is treated as a separate observation, the assumption of independence can be reasonably satisfied.
+                        </li>
+                    </ul>
                 </section>
 
                 
                 <section>
                     <h4 style="color: #4169E1">TEST STATISTICS</h4>
+                    Regression before March 31, 2020 has p-value = 0.00976888902128187, RMSE = 2.19, and R2 = 0.47. Regression after March 31, 2020 has p-value = 2.012949506521916e-05, RMSE = 1.23, and R2 = 0.19. 
                 </section>
 
 
                 <section>
                     <h4 style="color: #4169E1">RESULTS</h4>
+                    <img src="images/segmented.jpg" class="image fit">
+                    <p>
+                        For the regression before March 31, 2020, the obtained p-value of 0.00976888902128187 suggests that the relationship between the date and tweet frequency is statistically significant. This means that there is strong evidence to support the existence of a relationship between the timing and the frequency of tweets related to the alleged Chinese origin narrative of COVID-19. The root mean square error (RMSE) of 2.19 indicates the average deviation of the observed tweet frequencies from the predicted values, with lower values indicating better model fit. Additionally, the R-squared (R2) value of 0.47 indicates that approximately 47% of the variability in tweet frequency can be explained by the date variable in this segment.       
+                        </p>
+    
+                        <p>
+                        Moving to the regression analysis conducted after March 31, 2020, the obtained p-value of 2.012949506521916e-05 suggests a highly significant relationship between the date and tweet frequency during this period. This indicates that there is strong evidence to support the association between the timing and the frequency of tweets related to the alleged Chinese origin narrative of COVID-19 in this segment as well. The lower RMSE value of 1.23 in this regression segment suggests a better model fit compared to the previous segment. However, the lower R2 value of 0.19 indicates that only 19% of the variability in tweet frequency can be explained by the date variable during this period.
+                        </p>
+
+                        <p>
+                            In conclusion, the results of the regression analysis indicate a statistically significant relationship between the timing of the Wuhan lab virus leakage rumors and the spread of misinformation about COVID-19 being created by China. The tweet frequency is influenced by the date variable, both before and after March 31, 2020. However, there is no significant difference in the slopes of the regression lines, suggesting a consistent relationship throughout the analyzed time period. These findings support the hypothesis that the timing of the rumors correlates with the spread of misinformation about COVID-19 allegedly being created by China.
+                        </p>
                 </section>
 			</article>
 			</div>
