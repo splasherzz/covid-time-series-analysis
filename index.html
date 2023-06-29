@@ -18,6 +18,16 @@
 			padding: 15px;
 		}
 
+
+		.clickable {
+			cursor: pointer;
+		}
+
+		.clickable .icon-link:hover,
+		.clickable .icon-link:hover .icon {
+			cursor: pointer;
+		}
+
 		.expandable-content.active {
 			display: block;
 		}
@@ -29,36 +39,43 @@
 		.modals {
 			text-align: justify;
 		}
+
+		.center-row {
+			display: flex;
+			justify-content: center;
+		}
 	</style>
 </head>
 
 <body class="is-preload">
 
 	<!-- Nav -->
-			<nav id="nav">
-				<ul class="container">
-					<li><a href="index.html">HOME</a></li>
-					<li><a href="index.html#problem">PROBLEM</a></li>
-					<!-- li><a href="#data">DATA</a></li -->
-					<li class="dropdown"><a href="index.html#methods">METHOD <i class="fa fa-caret-down"></i></a>
-						<ul class="dropdown-menu">
-							<li><a href="preprocess.html">PREPROCESSING</a></li>
-							<li><a href="analysis.html">TIME SERIES ANALYSIS</a></li>
-						</ul>
-					</li>
-					<li class="dropdown"><a href="index.html#results">RESULTS <i class="fa fa-caret-down"></i></a>
-						<ul class="dropdown-menu">
-							<li><a href="regression.html">REGRESSION ANALYSIS</a></li>
-							<li><a href="event.html">EVENT DETECTION</a></li>
-                            <li><a href="discussion.html">DISCUSSION</a></li>
-						</ul>
-					</li>
-					<li><a href="index.html#team">TEAM</a></li>
+	<nav id="nav">
+		<ul class="container">
+			<li><a href="index.html">HOME</a></li>
+			<li><a href="index.html#problem">PROBLEM</a></li>
+			<!-- li><a href="#data">DATA</a></li -->
+			<li class="dropdown"><a href="index.html#methods">METHOD <i class="fa fa-caret-down"></i></a>
+				<ul class="dropdown-menu">
+					<li><a href="preprocess.html">PREPROCESSING</a></li>
+					<li><a href="analysis.html">TIME SERIES ANALYSIS</a></li>
 				</ul>
-			</nav>
+			</li>
+			<li class="dropdown"><a href="index.html#results">RESULTS <i class="fa fa-caret-down"></i></a>
+				<ul class="dropdown-menu">
+					<li><a href="regression.html">REGRESSION ANALYSIS</a></li>
+					<li><a href="event.html">EVENT DETECTION</a></li>
+					<li><a href="discussion.html">DISCUSSION</a></li>
+				</ul>
+			</li>
+			<li><a href="index.html#team">TEAM</a></li>
+		</ul>
+	</nav>
 
 	<!-- Home -->
-	<article id="top" body style="background: url('images/landing.png'); background-repeat: no-repeat; background-attachment: scroll; background-size: 100%; background-size: cover;" class="wrapper style1">
+	<article id="top" body
+		style="background: url('images/landing.png'); background-repeat: no-repeat; background-attachment: scroll; background-size: 100%; background-size: cover;"
+		class="wrapper style1">
 		<div class="container">
 			<div class="row">
 				<div class="col-6 col-5-large col-12-medium">
@@ -67,10 +84,15 @@
 				<div class="col-6 col-7-large col-12-medium" style="text-align: right;">
 					<header style="line-height: 0%;">
 						<h1><strong style="color:#234EA2; font-size:55px;">Tracing the Source</strong></h1>
-						<img src="images/logocircle.png" width="25em" style="vertical-align: middle;"/>
+						<img src="images/logocircle.png" width="25em" style="vertical-align: middle;" />
 						<strong style="color:#234EA2; ">A project by Vanguard</strong>
 					</header>
-					<p>A data science project that aims to identify the event(s) that played a key role in initiating and amplifying the misinformation about COVID-19 being created by China. This research holds significance as it further aims to combat the spread of false information and foster a more informed society. It is situated within the context of the global pandemic and the significant impact misinformation can have on public health, international relations, and societal trust.<br><br><br><br><br></p>
+					<p>A data science project that aims to identify the event(s) that played a key role in initiating
+						and amplifying the misinformation about COVID-19 being created by China. This research holds
+						significance as it further aims to combat the spread of false information and foster a more
+						informed society. It is situated within the context of the global pandemic and the significant
+						impact misinformation can have on public health, international relations, and societal
+						trust.<br><br><br><br><br></p>
 				</div>
 			</div>
 		</div>
@@ -88,7 +110,8 @@
 					<section class="box style1">
 						<span class="icon featured fa-question-circle"></span>
 						<h3>Research Question</h3>
-						<p>What event has triggered the spread of misinformation about Covid-19 being created by China? <br><br>
+						<p>What event has triggered the spread of misinformation about Covid-19 being created by China?
+							<br><br>
 						</p>
 					</section>
 				</div>
@@ -96,15 +119,17 @@
 					<section class="box style1">
 						<span class="icon featured fa-lightbulb"></span>
 						<h3>Hypothesis</h3>
-						<p>The timing of the Wuhan lab virus leakage rumors correlates with the spread of misinformation about Covid-19 being created by China.</p>
+						<p>The timing of the Wuhan lab virus leakage rumors correlates with the spread of misinformation
+							about Covid-19 being created by China.</p>
 					</section>
 				</div>
 				<div class="col-3 col-6-medium col-12-small">
 					<section class="box style1">
 						<span class="icon featured fa-map"></span>
 						<h3>Action Plan</h3>
-						<p>Analyze the frequency and posting time of misinformation tweets about Covid-19 being created by China. <br><br>
-						</p> 
+						<p>Analyze the frequency and posting time of misinformation tweets about Covid-19 being created
+							by China. <br><br>
+						</p>
 					</section>
 				</div>
 			</div>
@@ -207,7 +232,7 @@
 				<h2>Here's what we found out.</h2>
 				<p>Click on the links below to see our results and interpretation.</p>
 			</header>
-			<div class="row">
+			<div class="row" style="margin-bottom: 20px;">
 				<div class="col-1">
 				</div>
 				<div class="col-5 col-5-medium col-12-small">
@@ -225,9 +250,22 @@
 					</article>
 				</div>
 			</div>
+			<div class="row center-row">
+				<div class="col-5 col-5-medium col-12-small">
+					<article class="box style1 clickable">
+						<a href="discussion.html" class="icon-link">
+							<span class="icon featured fa-chart-bar"></span>
+						</a>
+						<h3><a href="discussion.html">Conclusion</a></h3>
+						<p>Discussion and Implications of our Research</p>
+					</article>
+				</div>
+			</div>
+
 			<footer>
 				<p>Want to learn more? Take a look at our source codes.</p>
-				<a href="https://github.com/Shanicc/cs132-grp12/tree/main" class="button large scrolly">Github Repository</a>
+				<a href="https://github.com/Shanicc/cs132-grp12/tree/main" class="button large scrolly">Github
+					Repository</a>
 			</footer>
 		</div>
 	</article>
@@ -246,7 +284,10 @@
 								style="border-radius:100%; width: 0.7in; height: 0.7in;" class="team-member"><br>Nicole
 							Flores<div style="font-size:12px; margin-top:-0.5em">CS 132 WFW</div>
 							<div class="expandable-content">
-								<p class="modals">Nicole is a passionate student with interests in English studies, speech, and computer science. She excels in language and communication, but she also explores programming languages and algorithms. Nicole aims to merge her linguistic and computational skills in areas like natural language processing.</p>
+								<p class="modals">Nicole is a passionate student with interests in English studies,
+									speech, and computer science. She excels in language and communication, but she also
+									explores programming languages and algorithms. Nicole aims to merge her linguistic
+									and computational skills in areas like natural language processing.</p>
 							</div>
 						</div>
 						<div style="flex-basis:30%;"><img src="images/teamicon2.jpg"
@@ -264,9 +305,11 @@
 								style="border-radius:100%; width: 0.7in; height: 0.7in;" class="team-member"><br>Andrei
 							Tiangco<div style="font-size:12px; margin-top:-0.5em">CS 132 WFW</div>
 							<div class="expandable-content">
-								<p class="modals">Andrei is an aspiring UI/UX designer and front-end web developer with a keen interest in algorithms and data structures. 
-								He is also eager to delve into data science or learn mobile development with Flutter. In his free time, he indulges in playing
-								sports such as table tennis and volleyball.
+								<p class="modals">Andrei is an aspiring UI/UX designer and front-end web developer with
+									a keen interest in algorithms and data structures.
+									He is also eager to delve into data science or learn mobile development with
+									Flutter. In his free time, he indulges in playing
+									sports such as table tennis and volleyball.
 								</p>
 							</div>
 						</div>
